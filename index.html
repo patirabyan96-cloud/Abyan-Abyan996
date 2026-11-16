@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mhd Abyan Patir - Portofolio & Kisah Inspiratif</title>
+    <!-- Google Fonts: Inter & Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================
+           EDIT DI SINI: Variabel Warna & Tema
+           ========================================= */
+        :root {
+            --bg-color: #f8fafc;
+            --surface-color: rgba(255, 255, 255, 0.8);
+            --surface-solid: #ffffff;
+            --text-color: #0f172a;
+            --text-muted: #64748b;
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --accent: #06b6d4;
+            --border-color: rgba(226, 232, 240, 0.8);
+            --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+            --glass-blur: blur(12px);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #030712;
+            --surface-color: rgba(17, 24, 39, 0.75);
+            --surface-solid: #111827;
+            --text-color: #f9fafb;
+            --text-muted: #9ca3af;
+            --primary: #6366f1;
+            --primary-hover: #818cf8;
+            --accent: #22d3ee;
+            --border-color: rgba(31, 41, 55, 0.8);
+            --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           NAVBAR
+           ========================================= */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--surface-color);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 75px;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a.active::after, .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+        }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        #hero {
+            padding-top: 10rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-tagline {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            height: 2.2rem;
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Profil Foto Interaktif */
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .profile-wrapper {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            padding: 6px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .profile-wrapper:hover {
+            transform: scale(1.02);
+        }
+
+        .profile-img-box {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            background: var(--surface-solid);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-initials {
+            font-family: 'Poppins', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-sm {
+            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
+            border-radius: 20px;
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        .error-msg {
+            color: #ef4444;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            min-height: 1.2rem;
+            text-align: center;
+        }
+
+        /* =========================================
+           TENTANG SAYA & INFO KARTU
+           ========================================= */
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 3.5rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .info-card {
+            background: var(--surface-color);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .info-card h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card p {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        /* =========================================
+           KEAHLIAN (SKILLS)
+           ========================================= */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--surface-color);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .skill-category h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1.25rem;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.2s cubic-bezier(0.1, 0.9, 0.2, 1);
+        }
+
+        /* =========================================
+           PENGALAMAN / PENDIDIKAN & KISAH SMK 1
+           ========================================= */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20px;
+            height: 100%;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-left: 3.5rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 0;
+            left: 12px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 4px solid var(--bg-color);
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+
+        .timeline-content {
+            background: var(--surface-color);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-color);
+            padding: 1.75rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateX(5px);
+            border-color: var(--primary);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: rgba(79, 70, 229, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-content h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.15rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-content h4 {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* =========================================
+           PROYEK (PROJECTS)
+           ========================================= */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--surface-color);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-img {
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .project-body {
+            padding: 1.75rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-body h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-body p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            background: var(--border-color);
+            border-radius: 50px;
+            color: var(--text-color);
+        }
+
+        .project-link {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================================
+           KONTAK & SOSMED
+           ========================================= */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3rem;
+            background: var(--surface-color);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-info h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea {
+            padding: 0.9rem 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-status {
+            font-size: 0.9rem;
+            font-weight: 500;
+            min-height: 1.2rem;
+        }
+
+        .form-status.success {
+            color: #10b981;
+        }
+
+        .form-status.error {
+            color: #ef4444;
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        footer {
+            background: var(--surface-solid);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-content p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .back-to-top {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .back-to-top:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN (MEDIA QUERIES)
+           ========================================= */
+        @media (max-width: 968px) {
+            .hero-grid, .about-grid, .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: center;
+            }
+
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 75px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 75px);
+                background: var(--surface-solid);
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+                transition: left 0.3s ease-in-out;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body data-theme="light">
+
+    <!-- =========================================
+       NAVBAR (Sticky Navigation)
+       ========================================= -->
+    <header>
+        <div class="container nav-container">
+            <a href="#hero" class="logo">Mhd Abyan Patir</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#hero" class="active">Beranda</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#skills">Keahlian</a></li>
+                    <li><a href="#journey">Kisah SMK</a></li>
+                    <li><a href="#projects">Proyek</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggleBtn" aria-label="Ganti Tema">🌙</button>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- =========================================
+           BAGIAN 1: HERO SECTION
+           ========================================= -->
+        <section id="hero" class="visible">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <h1>Halo, Saya <br><span style="color: var(--primary);">Mhd Abyan Patir</span></h1>
+                    <div class="hero-tagline" id="typingEffect"></div>
+                    <p class="hero-desc">
+                        Pelajar dan pengembang web pemula yang bersemangat dalam membangun antarmuka web modern, interaktif, serta ramah pengguna.
+                    </p>
+                    <div class="hero-btns">
+                        <a href="#contact" class="btn btn-primary">Hubungi Saya</a>
+                        <a href="#projects" class="btn btn-outline">Lihat Proyek</a>
+                    </div>
+                </div>
+
+                <!-- Foto Profil Interaktif -->
+                <div class="profile-container">
+                    <div class="profile-wrapper" id="profileWrapper" title="Klik untuk mengganti foto">
+                        <div class="profile-img-box" id="profileImgBox">
+                            <!-- EDIT DI SINI: Inisial default jika belum ada foto -->
+                            <span class="profile-initials" id="profileInitials">MAP</span>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="btn btn-primary btn-sm" id="changePhotoBtn">Ubah Foto</button>
+                        <button class="btn btn-outline btn-sm" id="removePhotoBtn" style="display:none;">Hapus Foto</button>
+                    </div>
+                    <input type="file" id="file-input" accept="image/*">
+                    <div class="error-msg" id="photoError"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================
+           BAGIAN 2: TENTANG SAYA
+           ========================================= -->
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">Tentang Saya</h2>
+                <p class="section-subtitle">Mengenal lebih dekat latar belakang dan minat saya</p>
+                
+                <div class="about-grid">
+                    <div class="about-text">
+                        <!-- EDIT DI SINI: Bio Singkat -->
+                        <p>
+                            Nama saya <strong>Mhd Abyan Patir</strong>. Saya adalah seorang siswa yang memiliki ketertarikan mendalam di bidang teknologi, pemrograman, dan desain web. Berbekal rasa ingin tahu yang tinggi, saya selalu antusias mempelajari hal-hal baru seputar pengembangan perangkat lunak.
+                        </p>
+                        <p>
+                            Bagi saya, teknologi bukan sekadar alat, melainkan sarana untuk menyelesaikan masalah di dunia nyata secara kreatif dan efisien.
+                        </p>
+                    </div>
+
+                    <div class="info-cards">
+                        <div class="info-card">
+                            <h4>Lokasi</h4>
+                            <p>Bangkinang, Riau</p>
+                        </div>
+                        <div class="info-card">
+                            <h4>Pendidikan</h4>
+                            <p>SMKN 1 Bangkinang</p>
+                        </div>
+                        <div class="info-card">
+                            <h4>Minat</h4>
+                            <p>Web Development</p>
+                        </div>
+                        <div class="info-card">
+                            <h4>Status</h4>
+                            <p>Aktif Belajar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================
+           BAGIAN 3: KEAHLIAN
+           ========================================= -->
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title">Keahlian & Kemampuan</h2>
+                <p class="section-subtitle">Teknologi dan perangkat yang biasa saya gunakan</p>
+
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>💻 Frontend</h3>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>HTML5 / Semantic</span><span>90%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>CSS3 / Flexbox / Grid</span><span>85%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>JavaScript (ES6+)</span><span>75%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="75"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>🛠️ Tools & Lainnya</h3>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Git & GitHub</span><span>70%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="70"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Responsive Design</span><span>90%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Problem Solving</span><span>80%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================
+           BAGIAN 4: KISAH MASUK SMK NEGERI 1 BANGKINANG (Double Page Section)
+           ========================================= -->
+        <section id="journey">
+            <div class="container">
+                <h2 class="section-title">Kisah Perjalanan</h2>
+                <p class="section-subtitle">Cerita lengkap perjuangan dan langkah awal saya masuk SMK Negeri 1 Bangkinang</p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Fase Persiapan (Kelas 9 SMP)</span>
+                            <h3>Menentukan Masa Depan & Pilihan Jurusan</h3>
+                            <h4>SMP Asal / Rumah</h4>
+                            <p>
+                                Menjelang kelulusan SMP, saya mulai memikirkan ke mana arah langkah selanjutnya akan dibawa. Di tengah banyaknya pilihan SMA dan SMK, saya merasa memiliki ketertarikan yang besar terhadap dunia komputer dan teknologi. Dari berbagai referensi dan cerita kakak kelas, <strong>SMK Negeri 1 Bangkinang</strong> menjadi impian utama karena fasilitas kejuruannya yang lengkap dan reputasinya yang sangat baik di Kabupaten Kampar.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Masa Pendaftaran & Seleksi</span>
+                            <h3>Menghadapi Ketegangan PPDB Online</h3>
+                            <h4>Kabupaten Kampar, Riau</h4>
+                            <p>
+                                Proses pendaftaran Penerimaan Peserta Didik Baru (PPDB) online penuh dengan drama menegangkan. Memantau posisi peringkat setiap jam, melengkapi berkas administrasi, dan memastikan semua syarat terpenuhi dengan baik. Dukungan penuh dari orang tua dan guru-guru SMP menjadi bahan bakar utama saya untuk tetap optimis melalui tahapan seleksi yang ketat tersebut.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Hari Pengumuman & Daftar Ulang</span>
+                            <h3>Diterima di Sekolah Impian</h3>
+                            <h4>SMK Negeri 1 Bangkinang</h4>
+                            <p>
+                                Rasa syukur yang luar biasa ketika melihat nama saya tercantum dalam daftar peserta yang diterima di SMKN 1 Bangkinang. Proses daftar ulang berjalan lancar, dan saat itulah rasanya gerbang masa depan baru resmi terbuka. Langkah kaki pertama memasuki gerbang sekolah ini membawa semangat baru untuk belajar sungguh-sungguh menggapai cita-cita di bidang teknologi.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Saat Ini & Masa Depan</span>
+                            <h3>Menjalani Proses Belajar & Berkembang</h3>
+                            <h4>SMKN 1 Bangkinang</h4>
+                            <p>
+                                Belajar di SMKN 1 Bangkinang memberikan banyak pengalaman berharga, mulai dari teori kejuruan hingga praktik langsung yang menantang. Di sinilah saya terus mengasah keterampilan ngoding, bekerja dalam tim, dan mempersiapkan diri menjadi tenaga profesional yang siap bersaing di dunia industri kreatif dan digital.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================
+           BAGIAN 5: PROYEK
+           ========================================= -->
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">Portofolio Proyek</h2>
+                <p class="section-subtitle">Beberapa karya dan latihan pembuatan web yang telah saya buat</p>
+
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-img">Landing Page</div>
+                        <div class="project-body">
+                            <h3>Profil Sekolah Interaktif</h3>
+                            <p>Website profil sekolah dengan tata letak modern, galeri foto, dan informasi jurusan berbasis web.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML5</span>
+                                <span class="tag">CSS3</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                            <a href="#projects" class="project-link">Lihat Detail →</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">Todo App</div>
+                        <div class="project-body">
+                            <h3>Aplikasi Daftar Tugas</h3>
+                            <p>Aplikasi pencatat tugas harian interaktif yang dilengkapi fitur penyimpanan lokal (localStorage).</p>
+                            <div class="project-tags">
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">DOM API</span>
+                                <span class="tag">CSS Grid</span>
+                            </div>
+                            <a href="#projects" class="project-link">Lihat Detail →</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">Portofolio v1</div>
+                        <div class="project-body">
+                            <h3>Portofolio Pribadi Klasik</h3>
+                            <p>Versi awal portofolio personal untuk menampilkan biodata diri serta catatan hobi pemrograman.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS Custom Props</span>
+                            </div>
+                            <a href="#projects" class="project-link">Lihat Detail →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================
+           BAGIAN 6: KONTAK & SOSMED
+           ========================================= -->
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Hubungi Saya</h2>
+                <p class="section-subtitle">Mari terhubung atau diskusikan proyek bersama</p>
+
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Mari Mulai Percakapan</h3>
+                        <p>Punya pertanyaan, tawaran kolaborasi, atau sekadar ingin menyapa? Jangan ragu untuk mengirimkan pesan melalui formulir atau kanal media sosial di bawah ini.</p>
+                        
+                        <div class="social-icons">
+                            <!-- EDIT DI SINI: Tautan Sosial Media -->
+                            <a href="https://github.com" target="_blank" class="social-icon" title="GitHub">GH</a>
+                            <a href="https://linkedin.com" target="_blank" class="social-icon" title="LinkedIn">IN</a>
+                            <a href="https://instagram.com" target="_blank" class="social-icon" title="Instagram">IG</a>
+                            <a href="mailto:abyanpatir@example.com" class="social-icon" title="Email">@</a>
+                        </div>
+                    </div>
+
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" placeholder="Masukkan nama Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Alamat Email</label>
+                            <input type="email" id="email" placeholder="nama@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Pesan</label>
+                            <textarea id="message" placeholder="Tuliskan pesan Anda di sini..." required></textarea>
+                        </div>
+                        <div class="form-status" id="formStatus"></div>
+                        <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =========================================
+       FOOTER
+       ========================================= -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 Mhd Abyan Patir. Hak Cipta Dilindungi.</p>
+            <button class="back-to-top" id="backToTopBtn">Kembali ke Atas ↑</button>
+        </div>
+    </footer>
+
+    <!-- =========================================
+       JAVASCRIPT (INTERAKTIF & LOGIKA)
+       ========================================= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            /* 1. DARK / LIGHT THEME TOGGLE */
+            const themeToggleBtn = document.getElementById('themeToggleBtn');
+            const body = document.body;
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme) {
+                body.setAttribute('data-theme', savedTheme);
+                themeToggleBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+            } else if (systemPrefersDark) {
+                body.setAttribute('data-theme', 'dark');
+                themeToggleBtn.textContent = '☀️';
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                const currentTheme = body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                themeToggleBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            });
+
+
+            /* 2. MOBILE HAMBURGER MENU & SMOOTH NAV */
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const navLinks = document.querySelector('.nav-links');
+
+            hamburgerBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Penanda Menu Aktif Saat Scroll
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-links a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === `#${current}`) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+
+            /* 3. TYPING EFFECT PADA HERO TAGLINE */
+            const roles = [
+                "Pelajar SMKN 1 Bangkinang",
+                "Frontend Web Developer",
+                "Teknologi & Pemrograman Enthusiast"
+            ];
+            let roleIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            const typingElement = document.getElementById('typingEffect');
+
+            function typeEffect() {
+                const currentRole = roles[roleIndex];
+                
+                if (isDeleting) {
+                    typingElement.textContent = currentRole.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typingElement.textContent = currentRole.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+
+                let typingSpeed = isDeleting ? 50 : 100;
+
+                if (!isDeleting && charIndex === currentRole.length) {
+                    typingSpeed = 2000; // Jeda waktu penuh sebelum menghapus
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    roleIndex = (roleIndex + 1) % roles.length;
+                    typingSpeed = 500;
+                }
+
+                setTimeout(typeEffect, typingSpeed);
+            }
+            typeEffect();
+
+
+            /* 4. INTERSECTION OBSERVER (Animasi Fade-in & Slide-up + Skill Bar) */
+            const observerOptions = {
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+
+                        // Animasikan bar progres keahlian jika bagian skill terlihat
+                        if (entry.target.id === 'skills') {
+                            document.querySelectorAll('.skill-progress').forEach(bar => {
+                                const targetWidth = bar.getAttribute('data-width');
+                                bar.style.width = targetWidth + '%';
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+
+            /* 5. FOTO PROFIL INTERAKTIF & LOCALSTORAGE */
+            const profileWrapper = document.getElementById('profileWrapper');
+            const changePhotoBtn = document.getElementById('changePhotoBtn');
+            const removePhotoBtn = document.getElementById('removePhotoBtn');
+            const fileInput = document.getElementById('file-input');
+            const profileImgBox = document.getElementById('profileImgBox');
+            const photoError = document.getElementById('photoError');
+
+            // Muat foto tersimpan dari localStorage saat halaman dimuat
+            const savedPhoto = localStorage.getItem('profilePhoto');
+            if (savedPhoto) {
+                displayPhoto(savedPhoto);
+            }
+
+            profileWrapper.addEventListener('click', () => fileInput.click());
+            changePhotoBtn.addEventListener('click', () => fileInput.click());
+
+            fileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                photoError.textContent = '';
+
+                // Validasi tipe file (hanya gambar)
+                if (!file.type.startsWith('image/')) {
+                    photoError.textContent = 'Format file harus berupa gambar (JPG, PNG, dll).';
+                    return;
+                }
+
+                // Validasi ukuran maksimal (3 MB)
+                if (file.size > 3 * 1024 * 1024) {
+                    photoError.textContent = 'Ukuran gambar maksimal adalah 3 MB.';
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const base64String = event.target.result;
+                    localStorage.setItem('profilePhoto', base64String);
+                    displayPhoto(base64String);
+                };
+                reader.readAsDataURL(file);
+            });
+
+            removePhotoBtn.addEventListener('click', () => {
+                localStorage.removeItem('profilePhoto');
+                profileImgBox.innerHTML = '<span class="profile-initials" id="profileInitials">MAP</span>';
+                removePhotoBtn.style.display = 'none';
+                photoError.textContent = '';
+            });
+
+            function displayPhoto(src) {
+                profileImgBox.innerHTML = `<img src="${src}" alt="Foto Profil Mhd Abyan Patir">`;
+                removePhotoBtn.style.display = 'inline-block';
+            }
+
+
+            /* 6. KONTAK FORM VALIDASI SISI KLIEN */
+            const contactForm = document.getElementById('contactForm');
+            const formStatus = document.getElementById('formStatus');
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                if (!name || !email || !message) {
+                    formStatus.textContent = 'Semua kolom wajib diisi!';
+                    formStatus.className = 'form-status error';
+                    return;
+                }
+
+                // Simulasi pengiriman sukses
+                formStatus.textContent = 'Terima kasih! Pesan Anda berhasil dikirim.';
+                formStatus.className = 'form-status success';
+                contactForm.reset();
+
+                setTimeout(() => {
+                    formStatus.textContent = '';
+                }, 5000);
+            });
+
+
+            /* 7. KEMBALI KE ATAS (BACK TO TOP) */
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
