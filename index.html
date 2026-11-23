@@ -276,8 +276,9 @@
 
         .profile-wrapper {
             position: relative;
-            width: 280px;
-            height: 280px;
+            width: min(280px, 72vw);
+            aspect-ratio: 1 / 1;
+            height: auto;
             border-radius: 50%;
             padding: 6px;
             background: linear-gradient(135deg, var(--primary), var(--accent));
@@ -302,9 +303,11 @@
         }
 
         .profile-img-box img {
+            display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center 28%;
         }
 
         .profile-initials {
@@ -867,7 +870,7 @@
                     <div class="profile-wrapper" id="profileWrapper" title="Klik untuk mengganti foto">
                         <div class="profile-img-box" id="profileImgBox">
                             <!-- EDIT DI SINI: Inisial default jika belum ada foto -->
-                            <span class="profile-initials" id="profileInitials">MAP</span>
+                            <img src="foto-abyan.jpg" alt="Foto profil Mhd Abyan Patir" loading="eager">
                         </div>
                     </div>
                     <div class="profile-actions">
@@ -1308,7 +1311,7 @@
 
             removePhotoBtn.addEventListener('click', () => {
                 localStorage.removeItem('profilePhoto');
-                profileImgBox.innerHTML = '<span class="profile-initials" id="profileInitials">MAP</span>';
+                profileImgBox.innerHTML = '<img src="foto-abyan.jpg" alt="Foto profil Mhd Abyan Patir">';
                 removePhotoBtn.style.display = 'none';
                 photoError.textContent = '';
             });
